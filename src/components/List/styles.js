@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-  /* min-height: 100vh; */
-  /* max-width: 100%; */
   background: #fff;
 
   position: relative;
@@ -13,21 +11,52 @@ export const Container = styled.main`
   border-radius: 10px;
   box-shadow: 0.1rem 0.1rem 4.3rem #5F5C5C;
 
-
   width: 60% ;
   min-height: 150px;
+  text-align: right;
+
 `;
 
-export const RegisterButton = styled.button``;
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  img {
+    margin: 5px 0px 70px;
+  }
+`;
+
+export const RegisterButton = styled.button`
+  width: 150px;
+  display: inline-block;
+  background: #46A0CD;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+
+  border: 2px solid #46A0CD; 
+
+  height: 30px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  transition: .3s ease;
+
+  :hover {
+    filter: brightness(.8);
+    border: 2px solid transparent; 
+  }
+`;
 
 export const Card = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: left;
 
-  margin:  auto;
   padding: 20px 25px;
-  margin-top: 100px;
+  margin-bottom: 25px;
 
   height: 100px;
 
@@ -69,10 +98,8 @@ export const CTAIcons = styled.aside`
   svg:hover {
     transition: .3s ease;
 
-    transform: scale(1.15);
+    transform: scale(1.2);
     fill: #46A0CD;
     cursor: pointer;
-
   }
-
 `;
