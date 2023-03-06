@@ -94,6 +94,10 @@ export const CTAIcons = styled.aside`
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  a {
+    color: inherit; 
+  }
   
   svg:hover {
     transition: .3s ease;
