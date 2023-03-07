@@ -1,6 +1,3 @@
-<!-- <h1 align="center">
-    <img alt="disney-logo-readme" title="My-wallet" src="public/layout/disney-logo-readme.svg" width= "80%"/>
-</h1> -->
 
 <br>
 
@@ -23,6 +20,7 @@
   <a href="#rocket-Getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#desktop_computer-Project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#bookmark-Layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#clapper-Demonstration">Demonstration</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#sunny-result">Result</a>
 </p>
 
@@ -59,7 +57,11 @@ $ npm run dev
 ## :desktop_computer: Project
 
 This application simulates an agricultural control system where users can geographically locate their farm
+## :clapper: Demonstration
 
+  <div style="display: flex;   flex-direction: column; align-items: center; margin: 15px 0px">
+    <img alt="bov-control-gif" src="public/video/bovcontrol.gif" width= "100%"/>    
+  </div>
 
 ---
 
