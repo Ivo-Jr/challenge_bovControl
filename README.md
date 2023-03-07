@@ -1,38 +1,89 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- <h1 align="center">
+    <img alt="disney-logo-readme" title="My-wallet" src="public/layout/disney-logo-readme.svg" width= "80%"/>
+</h1> -->
 
-## Getting Started
+<br>
 
-First, run the development server:
+<p align="center">
+  <img alt="My-wallet" src="public/images/bovcontrol.svg" width="160px">
+</p>
+
+<h4 align="center">
+  Application built for managment and control of agricultural operations.
+</h4>
+
+---
+
+<!-- [We are ONLINE, try Now](https://disney-clone-bcb41.web.app) :point_left: -->
+
+<br>
+
+<p align="center">
+  <a href="#test_tube-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#rocket-Getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#desktop_computer-Project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#bookmark-Layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#sunny-result">Result</a>
+</p>
+
+## :test_tube: Technologies
+
+This project was developed using the following technologies:
+
+- [Next.JS](https://nextjs.org/)
+- [React-Hook-Form](https://react-hook-form.com/)
+- [Yup](https://github.com/jquense/yup)
+- [Cloud Google](https://cloud.google.com/)
+- [Styled Components](https://styled-components.com/)
+
+
+## :rocket: Getting started
+
+To clone and run this application, you'll need [Git](https://git-scm.com), [Node.js v14.17.2][nodejs] or higher + [Npm v8.19.2][npm] or higher installed on your computer. From your command line:
+
+Clone the project and access the folder
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+$ https://github.com/Ivo-Jr/challenge_bovControl.git && cd bovcontrol
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Follow the steps below
+```bash
+# Install the dependencies
+$ npm
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Start the project
+$ npm run dev
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## :desktop_computer: Project
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+This application simulates an agricultural control system where users can geographically locate their farm
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## :sunny: Result
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<h3>Responsive Layout:<h3>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+  <div style="display: flex;   flex-direction: column;
+  align-items: center;">
+  <h1 align="center" style="display: flex; flex-direction:row;">
+      <img   style="margin: 15px 0px" alt="application-0" src="public/images/layout/prt0.png" />
+  </h1>     
+  </div>
 
-## Deploy on Vercel
+  <div style="display: flex; flex-direction: column;
+  align-items: center;">
+  <h1 align="center" style="display: column; flex-direction:row;">
+      <img style="margin: 15px; width: 550px" alt="application-1" src="public/images/layout/prt1.png" />
+      <img style="margin: 15px; width: 550px" alt="application-4" src="public/images/layout/prt4.png" />
+      <div style="display: flex; justify-content: center">
+        <img   style="margin: 15px 0px; width: 320px" alt="application-2" src="public/images/layout/prt2.png"/>
+        <img   style="margin: 15px; width: 190px" alt="application3" src="public/images/layout/prt3.png"/>
+      </div>
+  </h1>  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<p align="center">Made with ❤ by Ivo Jr</p>
