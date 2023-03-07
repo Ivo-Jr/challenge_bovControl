@@ -38,10 +38,16 @@ const schema = yup.object({
 
 export default function Edition({ data }) {
   const router = useRouter();
+  const { isFallback } = useRouter();
 
   const { register, handleSubmit, formState: { errors }, } = useForm({
     resolver: yupResolver(schema)
   });
+
+  if (isFallback) {
+    return <h1>Loading...</h1>
+  }
+
 
   const submitForm = async item => {
     const formData =
@@ -91,81 +97,79 @@ export default function Edition({ data }) {
               <IoIosReturnLeft />
             </Link>
 
-            {data ?
-              <Box>
-                <div>
-                  <label>Name</label>
-                  <input {...register("name")} defaultValue={data.fromName} />
-                  {errors.name && <p>{errors.name.message}</p>}
-                </div>
-                <div>
-                  <label>type</label>
-                  <input {...register("type")} defaultValue={data.type} />
-                  {errors.type && <p>{errors.type.message}</p>}
-                </div>
-                <div>
-                  <label>{`Farmer's name`}</label>
-                  <input {...register("farmerName")} defaultValue={data.farmerName} />
-                  {errors.farmerName && <p>{errors.farmerName.message}</p>}
-                </div>
-                <div>
-                  <label>{`Farmer's city`}</label>
-                  <input {...register("farmerCity")} defaultValue={data.farmerCity} />
-                  {errors.farmerCity && <p>{errors.farmerCity.message}</p>}
-                </div>
-                <div>
-                  <label>Number of cows head</label>
-                  <input {...register("numberOfCowsHead")} defaultValue={data.numberOfCowsHead} />
-                  {errors.numberOfCowsHead && <p>{errors.numberOfCowsHead.message}</p>}
-                </div>
-                <div>
-                  <label>Amount of milk produced</label>
-                  <input {...register("milkProduced")} defaultValue={data.milkProduced} />
-                  {errors.milkProduced && <p>{errors.milkProduced.message}</p>}
-                </div>
-                <div>
-                  <section className="radio" >
-                    <label>Supervision</label>
-                    <div className='boxRadio' defaultValue={data.supervision}>
-                      <div>
-                        <label>Yes</label>
-                        <input
-                          type="radio"
-                          value="Yes"
-                          name="option"
-                          {...register("supervision")}
-                        />
-                      </div>
-                      <div>
-                        <label>No</label>
-                        <input
-                          type="radio"
-                          value="No"
-                          name="option"
-                          {...register("supervision")}
-                        />
-                      </div>
+            <Box>
+              <div>
+                <label>Name</label>
+                <input {...register("name")} defaultValue={data.fromName} />
+                {errors.name && <p>{errors.name.message}</p>}
+              </div>
+              <div>
+                <label>type</label>
+                <input {...register("type")} defaultValue={data.type} />
+                {errors.type && <p>{errors.type.message}</p>}
+              </div>
+              <div>
+                <label>{`Farmer's name`}</label>
+                <input {...register("farmerName")} defaultValue={data.farmerName} />
+                {errors.farmerName && <p>{errors.farmerName.message}</p>}
+              </div>
+              <div>
+                <label>{`Farmer's city`}</label>
+                <input {...register("farmerCity")} defaultValue={data.farmerCity} />
+                {errors.farmerCity && <p>{errors.farmerCity.message}</p>}
+              </div>
+              <div>
+                <label>Number of cows head</label>
+                <input {...register("numberOfCowsHead")} defaultValue={data.numberOfCowsHead} />
+                {errors.numberOfCowsHead && <p>{errors.numberOfCowsHead.message}</p>}
+              </div>
+              <div>
+                <label>Amount of milk produced</label>
+                <input {...register("milkProduced")} defaultValue={data.milkProduced} />
+                {errors.milkProduced && <p>{errors.milkProduced.message}</p>}
+              </div>
+              <div>
+                <section className="radio" >
+                  <label>Supervision</label>
+                  <div className='boxRadio' defaultValue={data.supervision}>
+                    <div>
+                      <label>Yes</label>
+                      <input
+                        type="radio"
+                        value="Yes"
+                        name="option"
+                        {...register("supervision")}
+                      />
                     </div>
-                  </section>
-                  {errors.supervision && <p>{errors.supervision.message}</p>}
-                </div>
-                <div>
-                  <label>To</label>
-                  <input {...register("to")} defaultValue={data.to} />
-                  {errors.to && <p>{errors.to.message}</p>}
-                </div>
-                <div>
-                  <label>Latitude</label>
-                  <input {...register("latitude")} defaultValue={data.latitude} />
-                  {errors.latitude && <p>{errors.latitude.message}</p>}
-                </div>
-                <div>
-                  <label>Longitude</label>
-                  <input {...register("longitude")} defaultValue={data.longitude} />
-                  {errors.longitude && <p>{errors.longitude.message}</p>}
-                </div>
-              </Box>
-              : ''}
+                    <div>
+                      <label>No</label>
+                      <input
+                        type="radio"
+                        value="No"
+                        name="option"
+                        {...register("supervision")}
+                      />
+                    </div>
+                  </div>
+                </section>
+                {errors.supervision && <p>{errors.supervision.message}</p>}
+              </div>
+              <div>
+                <label>To</label>
+                <input {...register("to")} defaultValue={data.to} />
+                {errors.to && <p>{errors.to.message}</p>}
+              </div>
+              <div>
+                <label>Latitude</label>
+                <input {...register("latitude")} defaultValue={data.latitude} />
+                {errors.latitude && <p>{errors.latitude.message}</p>}
+              </div>
+              <div>
+                <label>Longitude</label>
+                <input {...register("longitude")} defaultValue={data.longitude} />
+                {errors.longitude && <p>{errors.longitude.message}</p>}
+              </div>
+            </Box>
 
             <SubmitButton type="submit" value="Submit" />
           </Form>

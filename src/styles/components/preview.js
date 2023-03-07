@@ -19,10 +19,6 @@ export const Content = styled.div`
 `;
 
 export const ButtonControl = styled.button`
-  /* position: absolute; */
-  /* top: 15px; */
-  /* right: 20px; */
-
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -77,7 +73,6 @@ export const Wrapper = styled.section`
   border-radius: 10px;
   box-shadow: 0.1rem 0.1rem 4.3rem #5F5C5C;
  
-  /* max-width: 60%; */
   min-height: 300px;
 `;
 
@@ -109,10 +104,6 @@ export const Row = styled.div`
 `;
 
 export const Column = styled.div`
-  /* display: inline-block; */
-  /* width: 200px; */
-  /* height: 100px; */
-  /* flex-basis: 100%; */
   width: 150px;
 
 
@@ -125,7 +116,7 @@ export const Column = styled.div`
 export const Map = styled.div`
   height: 270px;
   width: 100%;
-  background: green;
+  background: gray;
 
   margin-top: 50px;
 
