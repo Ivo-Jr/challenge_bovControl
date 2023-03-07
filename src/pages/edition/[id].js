@@ -48,7 +48,6 @@ export default function Edition({ data }) {
     return <h1>Loading...</h1>
   }
 
-
   const submitForm = async item => {
     const formData =
     {
@@ -183,7 +182,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: [
-      { params: {} }
+      { params: { id: '4' } }
     ],
     fallback: true,
   }
