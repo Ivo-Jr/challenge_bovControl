@@ -2,6 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/router';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import Link from 'next/link';
+
+import api from '../services/api';
 
 import { IoIosReturnLeft } from 'react-icons/io';
 
@@ -13,8 +16,6 @@ import {
   Box,
   SubmitButton
 } from "../styles/components/register";
-import Link from 'next/link';
-import api from '../services/api';
 
 const schema = yup.object({
   name: yup.string()

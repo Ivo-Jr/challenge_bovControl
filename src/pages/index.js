@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useRouter } from "next/router.js";
+
 import api from "../services/api";
 import Image from "next/image";
 
@@ -6,6 +9,7 @@ import { FaRegTrashAlt, FaPen, FaEye } from 'react-icons/fa';
 
 import {
   Container,
+  Content,
   RegisterButton,
   Wrapper,
   Card,
@@ -16,8 +20,39 @@ import {
 
 import BovImage from '../assets/bovcontrol.svg';
 import Link from "next/link";
+import ConfirmationModal from "../components/modal";
 
 export default function Home({ data }) {
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [deleteItemById, setDeleteItemById] = useState('');
+  const router = useRouter();
+
+  const handleDeleteModal = (data) => {
+    setDeleteItemById(data);
+
+    setModalIsOpen(true);
+  };
+
+  const handleModalCloseModal = () => {
+    setModalIsOpen(false);
+  };
+
+  async function handleConfirmModal() {
+
+    try {
+      await api.delete(`/${deleteItemById}`);
+      setModalIsOpen(false);
+      setDeleteItemById('');
+
+      alert('The register has been deleted!');
+      router.push('/');
+
+    } catch (err) {
+      alert("The register cannot be deleted!")
+      throw new Error(err);
+    }
+  }
+
   return (
     <Container>
       <Link href={'/register'}>
@@ -36,8 +71,10 @@ export default function Home({ data }) {
 
               <RightInfo>
                 <CTAIcons>
-                  <FaRegTrashAlt />
-                  <FaPen />
+                  <FaRegTrashAlt onClick={() => handleDeleteModal(item.id)} />
+                  <Link href={`/edition/${item.id}`}>
+                    <FaPen />
+                  </Link>
                   <Link href={`/preview/${item.id}`} key={`${item.id}`}>
                     <FaEye />
                   </Link>
@@ -49,6 +86,14 @@ export default function Home({ data }) {
           )
         })}
       </Wrapper>
+
+      <ConfirmationModal
+        isOpen={modalIsOpen}
+        onRequestClose={handleModalCloseModal}
+        onConfirm={handleConfirmModal}
+        title="DELETE!!"
+        message="Are you sure you want to delete this item?"
+      />
     </Container>
   )
 }

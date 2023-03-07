@@ -19,7 +19,6 @@ import {
   Box,
   Infomations,
   Row,
-  Column,
   Map,
   ButtonControl
 } from "../../styles/components/preview.js";

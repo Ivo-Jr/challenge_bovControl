@@ -17,6 +17,7 @@ export const Container = styled.main`
 
 `;
 
+
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
