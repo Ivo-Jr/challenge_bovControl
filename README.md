@@ -77,11 +77,11 @@ This application simulates an agricultural control system where users can geogra
   <div style="display: flex; flex-direction: column;
   align-items: center;">
   <h1 align="center" style="display: column; flex-direction:row;">
-      <img style="margin: 15px; width: 550px" alt="application-1" src="public/images/layout/prt1.png" />
+      <img style="margin: 15px; width: 550px" alt="application-2" src="public/images/layout/prt2.png" />
       <img style="margin: 15px; width: 550px" alt="application-4" src="public/images/layout/prt4.png" />
       <div style="display: flex; justify-content: center">
-        <img   style="margin: 15px 0px; width: 320px" alt="application-2" src="public/images/layout/prt2.png"/>
-        <img   style="margin: 15px; width: 190px" alt="application3" src="public/images/layout/prt3.png"/>
+        <img   style="margin: 15px 0px; width: 490px" alt="application-1" src="public/images/layout/prt1.png"/>
+        <img   style="margin: 15px; width: 490px" alt="application3" src="public/images/layout/prt3.png"/>
       </div>
   </h1>  
 
