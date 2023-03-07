@@ -14,7 +14,7 @@
 
 ---
 
-<!-- [We are ONLINE, try Now](https://disney-clone-bcb41.web.app) :point_left: -->
+[We are ONLINE, try Now](https://bovcontrol.vercel.app/) :point_left:
 
 <br>
 
