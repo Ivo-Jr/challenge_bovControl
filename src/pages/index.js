@@ -20,7 +20,9 @@ import Link from "next/link";
 export default function Home({ data }) {
   return (
     <Container>
-      <RegisterButton>Register</RegisterButton>
+      <Link href={'/register'}>
+        <RegisterButton>Register</RegisterButton>
+      </Link>
       <Wrapper>
         <Image src={BovImage} alt="logo_bovcontrol" />
         {data.map(item => {

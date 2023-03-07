@@ -1,85 +1,165 @@
-import api from "../../services/api.js";
+import { useState } from "react";
 import Link from "next/link.js";
+import { useRouter } from "next/router.js";
 import { format } from "date-fns";
+import { GoogleMap, MarkerF } from '@react-google-maps/api';
+
+import api from "../../services/api.js";
+import ConfirmationModal from "../../components/modal.js";
+
+import { GoogleMapsLoader } from "../../components/googleMapsLoader.js";
+import { IoIosReturnLeft, IoIosAdd } from 'react-icons/io';
+import { FaRegTrashAlt, FaPen } from 'react-icons/fa';
+import { MdAdd } from 'react-icons/md'
 
 import {
   Container,
   Content,
   Wrapper,
+  Box,
   Infomations,
   Row,
   Column,
   Map,
-  ReturnButton
+  ButtonControl
 } from "../../styles/components/preview.js";
 
-import { IoIosReturnLeft } from 'react-icons/io'
 
 export default function Preview({ data }) {
-  console.log(data, '$$$$$')
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const router = useRouter();
+  const { isFallback } = useRouter();
+
+  if (isFallback) {
+    return <h1>Loading...</h1>
+  }
+
+  const position = {
+    lat: data.latitude,
+    lng: data.longitude
+  };
+
+  const handleDeleteModal = () => {
+    setModalIsOpen(true);
+  };
+
+  const handleModalCloseModal = () => {
+    setModalIsOpen(false);
+  };
+
+  async function handleConfirmModal() {
+
+    try {
+      await api.delete(`/${data.id}`);
+      setModalIsOpen(false);
+
+      alert('The register has been deleted!')
+      router.push('/');
+
+    } catch (err) {
+      alert("The register cannot be deleted!")
+      throw new Error(err);
+    }
+  }
 
   return (
     <Container>
-      <Wrapper>
-        <ReturnButton>
-          <Link href="/">
-            <IoIosReturnLeft />
-          </Link>
-        </ReturnButton>
-        <Content key={data.id}>
-          <Infomations >
-            <Row>
-              <h4>Name:</h4>
-              <span>{data.fromName}</span>
-            </Row>
-            <Row>
-              <h4>Type:</h4>
-              <span>{data.type}</span>
-            </Row>
+      <Content>
+        <h1>View</h1>
+        <Wrapper>
+          <ButtonControl>
+            <Link href="/">
+              <IoIosReturnLeft />
+            </Link>
 
-            <Row>
-              <h4>{"Farmer's name:"}</h4>
-              <span>{data.farmerName}</span>
-            </Row>
+            <div>
+              <Link href={`/register`}>
+                <MdAdd />
+              </Link>
 
-            <Row>
-              <h4>{"Farmer's city:"}</h4>
-              <span>{data.farmerCity}</span>
-            </Row>
+              <Link href={`/edition/${data.id}`}>
+                <FaPen />
+              </Link>
 
-            <Row>
-              <h4>Number of Cows head:</h4>
-              <span>{data.numberOfCowsHead}</span>
-            </Row>
-            <Row>
-              <h4>Milk produced:</h4>
-              <span>{data.milkProduced}</span>
-            </Row>
-            <Row>
-              <h4>Supervision:</h4>
-              <span>{data.supervision}</span>
-            </Row>
+              <FaRegTrashAlt onClick={() => handleDeleteModal()} />
+            </div>
+          </ButtonControl>
+          <Box key={data.id}>
+            <Infomations >
+              <Row>
+                <h4>Name:</h4>
+                <span>{data.fromName}</span>
+              </Row>
+              <Row>
+                <h4>Type:</h4>
+                <span>{data.type}</span>
+              </Row>
 
-            <Row>
-              <h4>To:</h4>
-              <span>{data.to}</span>
-            </Row>
+              <Row>
+                <h4>{"Farmer's name:"}</h4>
+                <span>{data.farmerName}</span>
+              </Row>
 
-            <Row>
-              <h4>Latitude:</h4>
-              <span>{data.latitude}</span>
-            </Row>
+              <Row>
+                <h4>{"Farmer's city:"}</h4>
+                <span>{data.farmerCity}</span>
+              </Row>
 
-            <Row>
-              <h4>Longitude:</h4>
-              <span>{data.longitude}</span>
-            </Row>
-          </Infomations>
-          <Map>
-            {/* <h2>MAP</h2> */}
-          </Map>
-        </Content>
-      </Wrapper>
+              <Row>
+                <h4>Number of Cows head:</h4>
+                <span>{data.numberOfCowsHead}</span>
+              </Row>
+              <Row>
+                <h4>Milk produced:</h4>
+                <span>{data.milkProduced}</span>
+              </Row>
+              <Row>
+                <h4>Supervision:</h4>
+                <span>{data.supervision}</span>
+              </Row>
+
+              <Row>
+                <h4>To:</h4>
+                <span>{data.to}</span>
+              </Row>
+
+              <Row>
+                <h4>Latitude:</h4>
+                <span>{data.latitude}</span>
+              </Row>
+
+              <Row>
+                <h4>Longitude:</h4>
+                <span>{data.longitude}</span>
+              </Row>
+            </Infomations>
+            <Map>
+              <GoogleMapsLoader>
+                <GoogleMap
+                  mapContainerStyle={{ width: '100%', height: '100%' }}
+                  center={position}
+                  zoom={15}
+                >
+                  <MarkerF position={position} options={{
+                    label: {
+                      text: data.farmerName,
+                      className: "map-marker"
+                    }
+                  }} />
+                </GoogleMap>
+              </GoogleMapsLoader>
+            </Map>
+          </Box>
+        </Wrapper>
+      </Content>
+
+      <ConfirmationModal
+        isOpen={modalIsOpen}
+        onRequestClose={handleModalCloseModal}
+        onConfirm={handleConfirmModal}
+        title="DELETE!!"
+        message="Are you sure you want to delete this item?"
+      />
     </Container>
   )
 }
@@ -117,6 +197,7 @@ export const getStaticProps = async ({ params }) => {
   return {
     props: {
       data
-    }
+    },
+    revalidate: 60 * 60 * 1, // 1 hour
   }
 }

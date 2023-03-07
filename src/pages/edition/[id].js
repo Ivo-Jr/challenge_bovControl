@@ -1,13 +1,15 @@
-import { useRouter } from "next/router"
-
-import Title from "../../components/Preview";
+import {
+  Container,
+  Wrapper
+} from "../../styles/components/edition.js";
 
 export default function Edition() {
-  const { query } = useRouter();
 
   return (
-    <Title>
-      <h1>Edition: {JSON.stringify(query)}</h1>
-    </Title>
+    <Container>
+      <Wrapper>
+        <h1>Edition: </h1>
+      </Wrapper>
+    </Container>
   )
 }
